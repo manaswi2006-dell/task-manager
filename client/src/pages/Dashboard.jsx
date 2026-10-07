@@ -103,6 +103,19 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
 
+  const filteredTasks = useMemo(() => {
+    return tasks.filter((task) => {
+      const matchesSearch =
+        task.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        task.description?.toLowerCase().includes(searchQuery.toLowerCase());
+
+      const matchesStatus =
+        statusFilter === 'All' ? true : task.status === statusFilter;
+
+      return matchesSearch && matchesStatus;
+    });
+  }, [tasks, searchQuery, statusFilter]);
+
   // Modals state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
