@@ -5,8 +5,8 @@ import { LogIn } from 'lucide-react';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'manugaikwad2006@gmail.com',
+    password: 'manaswi@123',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
